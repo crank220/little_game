@@ -1,0 +1,39 @@
+div {
+	color: white;
+}
+body{
+	background: black;
+}
+.wenziz{
+	text-align: center;
+	line-height: 33px;
+}
+.box{
+	/*background-image: url(img/beijing.jpg);*/
+	/*background-size: 350px 600px;*/
+	height: 600px;
+	width: 350px;
+	margin: 0 auto;
+}
+table{
+	border-collapse: collapse;
+	position: absolute;
+	top: 200px;
+	background: black;
+	padding: 3px;
+}
+img{
+	width: 33px;
+	height: 33px;
+}
+h2,h3{
+	color: black;
+	margin: 0;
+	font-family:"宋体";
+}
+.yellow{
+	color: orangered;
+}
+h2{
+	color:lightblue;
+}

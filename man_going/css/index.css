@@ -1,0 +1,7 @@
+ #game {
+	width: 85px;
+	height: 128px;
+	background: url(../img/man.png);
+	background-position-x:  -85px;
+	position: absolute;
+}
