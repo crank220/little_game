@@ -4,99 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>lottery</title>
-  <style>
-  .lottery{
-    width: 300px;
-    height: 300px;
-    display:flex;
-    flex-wrap: wrap;
-    position: relative;
-  }
-  span{
-    width: calc(100% / 3);
-    height: 100px;
-    box-sizing: border-box;
-    border: 1px solid #000;
-  }
-  .lottery span:nth-child(5) {
-    cursor: pointer;
-  }
-  label{
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, .666);
-    width: calc(100% / 3);
-    height: 100px;
-    transition: left .1s, top .1s;
-  }
-  </style>
+  <title>福利抽奖</title>
+  <link rel="stylesheet" href="css/index.css">
+  <script src="js/index.js"></script>
 </head>
 <body>
-  <div class="lottery">
-    <span>0</span>
-    <span>1</span>
-    <span>2</span>
-    <span>7</span>
-    <span onclick="begin()">play</span>
-    <span>3</span>
-    <span>6</span>
-    <span>5</span>
-    <span>4</span>
-    <label></label>
+  <div class="lettery">
+    <div class="box">
+      <div class="text">
+        <span>查看抽奖记录</span>
+        <label>您当前积分1234分，金币5678个</label>
+        <p>本次抽奖那个消耗 90分/个</p>
+      </div>
+      <div class="game">
+        <span><img src="https://consumer.huawei.com/content/dam/huawei-cbg-site/greate-china/cn/mkt/list-image/phones/p30-pro/p30-pro-orange.png"></span>
+        <span><img src="https://consumer.huawei.com/content/dam/huawei-cbg-site/greate-china/cn/mkt/list-image/phones/p30-pro/p30-pro-orange.png"></span>
+        <span><img src="https://consumer.huawei.com/content/dam/huawei-cbg-site/greate-china/cn/mkt/list-image/phones/p30-pro/p30-pro-orange.png"></span>
+        <span><img src="https://consumer.huawei.com/content/dam/huawei-cbg-site/greate-china/cn/mkt/list-image/phones/p30-pro/p30-pro-orange.png"></span>
+        <span onclick="begin()"></span>
+        <span><img src="https://consumer.huawei.com/content/dam/huawei-cbg-site/greate-china/cn/mkt/list-image/phones/p30-pro/p30-pro-orange.png"></span>
+        <span><img src="https://consumer.huawei.com/content/dam/huawei-cbg-site/greate-china/cn/mkt/list-image/phones/p30-pro/p30-pro-orange.png"></span>
+        <span><img src="https://consumer.huawei.com/content/dam/huawei-cbg-site/greate-china/cn/mkt/list-image/phones/p30-pro/p30-pro-orange.png"></span>
+        <span><img src="https://consumer.huawei.com/content/dam/huawei-cbg-site/greate-china/cn/mkt/list-image/phones/p30-pro/p30-pro-orange.png"></span>
+        <label></label>
+      </div>
+    </div>
+    <div class="rule">
+      <i>活动规则</i>
+    </div>
   </div>
-  <script>
-    const transitionArr = [['x', 100], ['x', 100], ['y', 100], ['y', 100], ['x', -100], ['x', -100], ['y', -100], ['y', -100]]
-    const label = document.querySelector('label')
-    let st = null, ing = false, speed, cur, step, end
-    function run() {
-      st = setInterval(() => {
-        if (transitionArr[cur][0] === 'x') {
-          label.style.left = (label.style.left.replace('px', '') * 1 + transitionArr[cur][1]) + 'px'
-        } else {
-          label.style.top = (label.style.top.replace('px', '') * 1 + transitionArr[cur][1]) + 'px'
-        }
-        cur++
-        step++
-        (cur === 8) && (cur = 0)
-        if (step - end + 6 === 32) {
-          clearInterval(st)
-          speed = 300
-          label.style.transition = 'left .3s, top .3s'
-          run()
-        }
-        if (step - end + 4 === 32) {
-          clearInterval(st)
-          speed = 500
-          label.style.transition = 'left .5s, top .5s'
-          run()
-        }
-        if (step - end + 2 === 32) {
-          clearInterval(st)
-          speed = 700
-          label.style.transition = 'left .7s, top .7s'
-          run()
-        }
-        if (step - end === 32) {
-          clearInterval(st)
-          ing = false
-        }
-      }, speed)
-    }
-    function begin() {
-      if (ing) return
-      ing = true
-      speed = 100
-      cur = 0
-      step = 0
-      end = Math.floor(Math.random() * 8)
-      console.log(end)
-      label.style.left = 0
-      label.style.top = 0
-      label.style.transition = 'left .1s, top .1s'
-      run()
-    }
-  </script>
 </body>
 </html>
