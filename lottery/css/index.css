@@ -4,8 +4,8 @@
       padding: 0;
     }
     .lettery{
+      padding-top: 5.6vw;
       background: #ffe539;
-      height: 100%;
     }
     .lettery .box{
       width: 100%;
@@ -17,10 +17,11 @@
       padding-top: 20vw;
       text-align: center;
     }
-    .lettery .box .text span{
+    .lettery .box .text a{
       font-size: 1rem;
       color: #000;
       display: block;
+      text-decoration: none;
     }
     .lettery .box .text label{
       font-size: .75rem;
@@ -37,20 +38,33 @@
       margin: 4.4vw auto 0;
       width: 67.8vw;
       height: 59.4vw;
+      position: relative;
+    }
+    .lettery .box .game .bg, .lettery .box .game .nine{
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 3;
       display:flex;
       flex-wrap: wrap;
-      position: relative;
       text-align: center;
+      width: 100%;
+      height: 100%;
+    }
+    .lettery .box .game .nine{
+      z-index: 5;
     }
     .lettery .box .game span{
       width: calc(100% / 3 - 2px);
       height: calc(100% / 3 - 2px);
       box-sizing: border-box;
-      background: url(../img/box.png) no-repeat;
-      background-size: 100%;
       margin: 3px 3px 0 0;
     }
-    .lettery .box .game span:nth-child(5){
+    .lettery .box .game .bg span{
+      background: url(../img/box.png) no-repeat;
+      background-size: 100%;
+    }
+    .lettery .box .game .nine span:nth-child(5){
       background: url(../img/play.png) no-repeat;
       background-size: 100%;
       cursor: pointer;
@@ -59,8 +73,13 @@
       background: url(../img/display.png) no-repeat !important;
       background-size: 100% !important;
     }
-    .lettery .box .game span img{
-      /* width: 100%; */
+    .lettery .box .game span:nth-child(3), .lettery .box .game span:nth-child(6), .lettery .box .game span:nth-child(9) {
+      margin-right: 0;
+    }
+    .lettery .box .game span:nth-child(1), .lettery .box .game span:nth-child(2), .lettery .box .game span:nth-child(3){
+      margin-top: 0;
+    }
+    .lettery .box .game .nine span img{
       height: 90%;
     }
     .lettery .box .game label{
@@ -73,13 +92,7 @@
       height: calc(90% / 3 - 2px);
       border-radius: 12.5%;
       transition: left .1s, top .1s;
-      opacity: .5;
-    }
-    .lettery .box .game span:nth-child(3), .lettery .box .game span:nth-child(6), .lettery .box .game span:nth-child(9) {
-      margin-right: 0;
-    }
-    .lettery .box .game span:nth-child(1), .lettery .box .game span:nth-child(2), .lettery .box .game span:nth-child(3){
-      margin-top: 0;
+      z-index: 4;
     }
     .rule{
       text-align: center;
@@ -93,15 +106,4 @@
       background: url(../img/border.png) no-repeat;
       background-size: 100% 100%;
       display: inline-block;
-    }
-    .rule span,.rule p{
-      display: block;
-      color: #000;
-      font-size: .9375rem;
-      line-height: 1.3125rem;
-      text-align: left;
-      margin-top: 5.6vw;
-    }
-    .rule p{
-      font-weight: 700;
     }

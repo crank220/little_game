@@ -44,7 +44,9 @@ function run() {
       clearInterval(st)
       setTimeout(function() {
         ing = false
-        document.querySelector('.lettery .box .game span:nth-child(5)').className = ''
+        document.querySelector('.lettery .box .game .nine span:nth-child(5)').className = ''
+        alert('游戏结束，你抽中了' + end)
+        initLettery()
       }, 1000)
     }
   }, speed)
@@ -53,7 +55,7 @@ function begin() {
   var frame = document.querySelector('.lettery .box .game label')
   if (ing) return
   ing = true
-  document.querySelector('.lettery .box .game span:nth-child(5)').className = 'ban'
+  document.querySelector('.lettery .box .game .nine span:nth-child(5)').className = 'ban'
   speed = 100
   cur = 0
   step = 0
@@ -62,4 +64,9 @@ function begin() {
   frame.style.top = 0
   frame.style.transition = 'left .1s, top .1s'
   run()
+}
+function initLettery() {
+  var frame = document.querySelector('.lettery .box .game label')
+  frame.style.left = 0
+  frame.style.top = 0
 }
