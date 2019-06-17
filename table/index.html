@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>table</title>
+  <style>
+    table{width: 100%;background: #ddd;}
+    table tr td{border: 1px solid #b2b2b2;}
+  </style>
+</head>
+<body>
+  <table border="0" cellspacing="0" cellpadding="0"></table>
+</body>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script>
+  var _json = {"page":1,"total":1,"records":7,"rows":[{"_id":{"timestamp":1542705720,"machineIdentifier":12485211,"processIdentifier":11634,"counter":10850440,"date":"2018-11-20 09:22:00","time":1542705720000,"timeSecond":1542705720},"_parentId":{"timestamp":1542246483,"machineIdentifier":12485211,"processIdentifier":11634,"counter":10848509,"date":"2018-11-15 01:48:03","time":1542246483000,"timeSecond":1542246483},"name":"建设体系","workerCount":5.0,"subTbTeamsList":null,"amembers":null,"membersCount":9,"worktimesList":null,"worktimes":0,"projectWorktimes":0,"accountProjectWorktimes":0.0,"sourceAllot":0.0,"projectRelatedWorktimes":0,"id":"5bf3d238be825b2d72a59088"},{"_id":{"timestamp":1542705719,"machineIdentifier":12485211,"processIdentifier":11634,"counter":10850294,"date":"2018-11-20 09:21:59","time":1542705719000,"timeSecond":1542705719},"_parentId":{"timestamp":1542246483,"machineIdentifier":12485211,"processIdentifier":11634,"counter":10848509,"date":"2018-11-15 01:48:03","time":1542246483000,"timeSecond":1542246483},"name":"北京办事处","workerCount":5.0,"subTbTeamsList":null,"amembers":null,"membersCount":4,"worktimesList":null,"worktimes":0,"projectWorktimes":0,"accountProjectWorktimes":0.0,"sourceAllot":0.0,"projectRelatedWorktimes":0,"id":"5bf3d237be825b2d72a58ff6"},{"_id":{"timestamp":1542705718,"machineIdentifier":12485211,"processIdentifier":11634,"counter":10849852,"date":"2018-11-20 09:21:58","time":1542705718000,"timeSecond":1542705718},"_parentId":{"timestamp":1542246483,"machineIdentifier":12485211,"processIdentifier":11634,"counter":10848509,"date":"2018-11-15 01:48:03","time":1542246483000,"timeSecond":1542246483},"name":"产品体系","workerCount":5.0,"subTbTeamsList":null,"amembers":null,"membersCount":25,"worktimesList":null,"worktimes":0,"projectWorktimes":0,"accountProjectWorktimes":0.0,"sourceAllot":0.0,"projectRelatedWorktimes":0,"id":"5bf3d236be825b2d72a58e3c"},{"_id":{"timestamp":1542617080,"machineIdentifier":12485211,"processIdentifier":11634,"counter":10848628,"date":"2018-11-19 08:44:40","time":1542617080000,"timeSecond":1542617080},"_parentId":{"timestamp":1542246483,"machineIdentifier":12485211,"processIdentifier":11634,"counter":10848509,"date":"2018-11-15 01:48:03","time":1542246483000,"timeSecond":1542246483},"name":"技术体系","workerCount":5.0,"subTbTeamsList":null,"amembers":null,"membersCount":262,"worktimesList":null,"worktimes":0,"projectWorktimes":0,"accountProjectWorktimes":0.0,"sourceAllot":0.0,"projectRelatedWorktimes":0,"id":"5bf277f8be825b2d72a58974"},{"_id":{"timestamp":1542705245,"machineIdentifier":12485211,"processIdentifier":11634,"counter":10848727,"date":"2018-11-20 09:14:05","time":1542705245000,"timeSecond":1542705245},"_parentId":{"timestamp":1542246483,"machineIdentifier":12485211,"processIdentifier":11634,"counter":10848509,"date":"2018-11-15 01:48:03","time":1542246483000,"timeSecond":1542246483},"name":"运营体系","workerCount":5.0,"subTbTeamsList":null,"amembers":null,"membersCount":18,"worktimesList":null,"worktimes":0,"projectWorktimes":0,"accountProjectWorktimes":0.0,"sourceAllot":0.0,"projectRelatedWorktimes":0,"id":"5bf3d05dbe825b2d72a589d7"},{"_id":{"timestamp":1542705245,"machineIdentifier":12485211,"processIdentifier":11634,"counter":10848715,"date":"2018-11-20 09:14:05","time":1542705245000,"timeSecond":1542705245},"_parentId":{"timestamp":1542246483,"machineIdentifier":12485211,"processIdentifier":11634,"counter":10848509,"date":"2018-11-15 01:48:03","time":1542246483000,"timeSecond":1542246483},"name":"前台体系","workerCount":5.0,"subTbTeamsList":null,"amembers":null,"membersCount":166,"worktimesList":null,"worktimes":0,"projectWorktimes":0,"accountProjectWorktimes":0.0,"sourceAllot":0.0,"projectRelatedWorktimes":0,"id":"5bf3d05dbe825b2d72a589cb"},{"_id":{"timestamp":1542705718,"machineIdentifier":12485211,"processIdentifier":11634,"counter":10849680,"date":"2018-11-20 09:21:58","time":1542705718000,"timeSecond":1542705718},"_parentId":{"timestamp":1542246483,"machineIdentifier":12485211,"processIdentifier":11634,"counter":10848509,"date":"2018-11-15 01:48:03","time":1542246483000,"timeSecond":1542246483},"name":"浙江区域","workerCount":5.0,"subTbTeamsList":null,"amembers":null,"membersCount":42,"worktimesList":null,"worktimes":0,"projectWorktimes":0,"accountProjectWorktimes":0.0,"sourceAllot":0.0,"projectRelatedWorktimes":0,"id":"5bf3d236be825b2d72a58d90"}]}
+  var _html = '<tr>', _th = ['name', 'id', '_id.date', '_parentId.date']
+  function begin() {
+    for (var i = 0; i < _th.length; i++) {
+      _html += '<td>' + _th[i] + '</td>'
+    }
+    _html += '</tr>'
+    _json.rows.forEach(item => {
+      _html += '<tr class="tr0">'
+      _html += '<td>' + item.name + '</td>'
+      _html += '<td>' + item.id + '</td>'
+      _html += '<td>' + item._id.date + '</td>'
+      _html += '<td>' + item._parentId.date + '</td>'
+      _html += '</tr>'
+    })
+    $('table').html(_html)
+  }
+  begin()
+  $('body').on('click', 'table tr td:nth-child(1)', function() {
+    if ($(this).parent().next('tr').attr('class').replace('tr', '') * 1 > $(this).parent().attr('class').replace('tr', '') * 1) return
+    var _flag = $(this).parent().attr('class') ? ($(this).parent().attr('class').replace('tr', '') * 1) + 1 : 1
+    var _html2 = ''
+    _json.rows.forEach(item => {
+      _html2 += '<tr class="tr' + _flag + '">'
+      _html2 += '<td style="padding-left: ' + _flag * 23.456789 +'px">' + item.name + '</td>'
+      _html2 += '<td>' + item.id + '</td>'
+      _html2 += '<td>' + item._id.date + '</td>'
+      _html2 += '<td>' + item._parentId.date + '</td>'
+      _html2 += '</tr>'        
+    })
+    $('table tr').eq($('table tr td:nth-child(1)').index(this)).after(_html2)
+  })
+</script>
+</html>
