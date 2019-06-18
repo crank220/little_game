@@ -22,7 +22,7 @@
     _html += '</tr>'
     _json.rows.forEach(item => {
       _html += '<tr class="tr0">'
-      _html += '<td>' + item.name + '</td>'
+      _html += '<td>' + item.name + ' +</td>'
       _html += '<td>' + item.id + '</td>'
       _html += '<td>' + item._id.date + '</td>'
       _html += '<td>' + item._parentId.date + '</td>'
@@ -38,15 +38,20 @@
     }
     var _flag = $(this).parent().attr('class') ? ($(this).parent().attr('class').replace('tr', '') * 1) + 1 : 1
     var _html2 = ''
-    _json.rows.forEach(item => {
-      _html2 += '<tr class="tr' + _flag + '">'
-      _html2 += '<td style="padding-left: ' + _flag * 23.456789 +'px">' + item.name + '</td>'
-      _html2 += '<td>' + item.id + '</td>'
-      _html2 += '<td>' + item._id.date + '</td>'
-      _html2 += '<td>' + item._parentId.date + '</td>'
-      _html2 += '</tr>'
-    })
-    $('table tr').eq(_index).after(_html2)
+    if (_json === null) {
+      $('table tr').eq(_index).html($('table tr').eq(_index).html().replace(' +', ''))
+    } else {
+      $('table tr').eq(_index).html($('table tr').eq(_index).html().replace('+', '-'))
+      _json.rows.forEach(item => {
+        _html2 += '<tr class="tr' + _flag + '">'
+        _html2 += '<td style="padding-left: ' + _flag * 23.456789 +'px">' + item.name + ' +</td>'
+        _html2 += '<td>' + item.id + '</td>'
+        _html2 += '<td>' + item._id.date + '</td>'
+        _html2 += '<td>' + item._parentId.date + '</td>'
+        _html2 += '</tr>'
+      })
+      $('table tr').eq(_index).after(_html2)
+    }
   })
 </script>
 </html>
