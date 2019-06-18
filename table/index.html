@@ -5,7 +5,7 @@
   <title>table</title>
   <style>
     table{width: 100%;background: #ddd;}
-    table tr td{border: 1px solid #b2b2b2;}
+    table tr td,table tr th{border: 1px solid #b2b2b2;text-align: left;}
   </style>
 </head>
 <body>
@@ -17,7 +17,7 @@
   var _html = '<tr>', _th = ['name', 'id', '_id.date', '_parentId.date']
   function begin() {
     for (var i = 0; i < _th.length; i++) {
-      _html += '<td>' + _th[i] + '</td>'
+      _html += '<th>' + _th[i] + '</th>'
     }
     _html += '</tr>'
     _json.rows.forEach(item => {
@@ -32,7 +32,10 @@
   }
   begin()
   $('body').on('click', 'table tr td:nth-child(1)', function() {
-    if ($(this).parent().next('tr').attr('class').replace('tr', '') * 1 > $(this).parent().attr('class').replace('tr', '') * 1) return
+    var _index = $('table tr td:nth-child(1)').index(this) + 1
+    if (_index !== $('table tr td:nth-child(1)').length) {
+      if ($(this).parent().next('tr').attr('class').replace('tr', '') * 1 > $(this).parent().attr('class').replace('tr', '') * 1) return
+    }
     var _flag = $(this).parent().attr('class') ? ($(this).parent().attr('class').replace('tr', '') * 1) + 1 : 1
     var _html2 = ''
     _json.rows.forEach(item => {
@@ -41,9 +44,9 @@
       _html2 += '<td>' + item.id + '</td>'
       _html2 += '<td>' + item._id.date + '</td>'
       _html2 += '<td>' + item._parentId.date + '</td>'
-      _html2 += '</tr>'        
+      _html2 += '</tr>'
     })
-    $('table tr').eq($('table tr td:nth-child(1)').index(this)).after(_html2)
+    $('table tr').eq(_index).after(_html2)
   })
 </script>
 </html>
