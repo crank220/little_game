@@ -3,13 +3,13 @@ function initRem() {
   document.documentElement.style.fontSize = (document.documentElement.clientWidth || window.innerWidth) * 16 / 375 + 'px'
 }
 initRem()
-window.addEventListener('resize', function() {initRem()})
+window.addEventListener('resize', function () { initRem() })
 
 var transitionArr = [['x', 22.9], ['x', 22.9], ['y', 20], ['y', 20], ['x', -22.9], ['x', -22.9], ['y', -20], ['y', -20]]
 var st = null, ing = false, speed, cur, step, end
 function run() {
   var frame = document.querySelector('.lettery .box .game label')
-  st = setInterval(function() {
+  st = setInterval(function () {
     if (transitionArr[cur][0] === 'x') {
       var f_left = frame.style.left.indexOf('px') > -1 ? frame.style.left.replace('px', '') * 1 : frame.style.left.replace('vw', '') * 1
       frame.style.left = (f_left + transitionArr[cur][1]) + 'vw'
@@ -42,7 +42,7 @@ function run() {
     }
     if (step - end === 32) {
       clearInterval(st)
-      setTimeout(function() {
+      setTimeout(function () {
         ing = false
         document.querySelector('.lettery .box .game .nine span:nth-child(5)').className = ''
         alert('游戏结束，你抽中了' + end)
